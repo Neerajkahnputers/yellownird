@@ -141,7 +141,7 @@ var ApplicationConfiguration = (function () {
         this.WEBAPIURL = '';
         this.LessonAutoSegmentSize = 0;
         this.APPLICATIONURL = 'http://www.yellowbird.tk';
-        this.WEBAPIURL = 'http://yellowbirdapi.azurewebsites.net/';
+        this.WEBAPIURL = 'https://yellowbirdapi.azurewebsites.net/';
         this.LessonAutoSegmentSize = 500;
     }
     return ApplicationConfiguration;
@@ -5202,7 +5202,7 @@ var ApplicationConfiguration = (function () {
         this.WEBAPIURL = '';
         this.LessonAutoSegmentSize = 0;
         this.APPLICATIONURL = 'http://www.yellowbird.tk';
-        this.WEBAPIURL = 'http://yellowbirdapi.azurewebsites.net/';
+        this.WEBAPIURL = 'https://yellowbirdapi.azurewebsites.net/';
         this.LessonAutoSegmentSize = 500;
     }
     return ApplicationConfiguration;
