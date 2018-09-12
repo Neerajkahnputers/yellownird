@@ -1,0 +1,138 @@
+.container,
+.container-intro, 
+.container-rule,
+.container__left {
+    width: 100%;
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 36px 8% 36px;
+    float: none;
+}
+.container-rule {
+    margin-top: 54px;
+    border-top: 1px solid #eee;
+}
+.container__left {
+    padding: 36px 0;
+    text-align: left;
+}
+.container-full {
+    background-color: #eee;
+    text-align: center;
+    padding: 54px 0 0 0;
+    margin-top: 56px;
+}
+.container-full div{
+    max-width: 740px;
+    margin: 0 auto 36px;
+}   
+.container-full div p {
+    padding: 0 8%;
+}
+article.container {
+    text-align: left;
+}
+.container-medium__fellow {
+    text-align: left;
+    width: 80%;
+    float: none;
+    clear: both;
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 16px 0 24px 0;
+}
+.container-medium__fellow::after { 
+   content: " ";
+   display: block; 
+   height: 0; 
+   clear: both;
+}
+.container-medium__fellow:nth-child(1n+2) {
+    border-bottom: 1px solid #eaeaea;
+}
+.sign-up article {
+    width: 100%;
+    float: left;
+    text-align: left;
+}
+.container-medium__fellow h2 {
+    margin-top: 48px;
+}
+
+    .container-medium__fellow p {
+        text-align: left;
+    }
+
+.container-intro {
+    background-color: #fafafa;
+    width: 100%;
+    margin: 24px 0;
+    padding: 24px 0;
+    float: left;
+}
+
+    .container__rule {
+/*        border-top: 1px solid #dedede;*/
+        margin-top: 48px;
+        padding: 48px 0;
+        text-align: center;
+        float: left;
+    }
+
+.container-headline {
+    background-color: #f3fafb;
+    width: 100%;
+    max-height: 400px;
+    overflow: hidden;
+}
+
+
+
+
+//  Tablet and Larger Screens
+//  ======================================
+
+@media (min-width: 700px) {
+
+.container,
+.container-intro, 
+.container__rule {
+    padding: 36px 0;
+    }
+    .sign-up h2,
+    .sign-up p {
+        text-align: left;
+    }    
+.container-medium__fellow {
+    text-align: left;
+    margin: 0px auto;
+    width: 85%;
+    max-width: none;
+    padding: 48px 0 64px 0;
+    border-bottom: 1px solid #eaeaea;
+}    
+.container-mini {
+    width: 50%;
+    float: left;
+    min-height: 350px;
+    padding: 0 4%;
+    text-align: center;
+    }
+.sign-up article {
+    width: 50%;
+    float: left;
+    text-align: left;
+}   
+}
+
+
+//  Large Screens
+//  ======================================
+@media (min-width: 900px) {
+   .container-medium__fellow {
+    text-align: left;
+    margin: 0px auto;
+    width: 100%;
+    max-width: 700px; 
+    }
+}

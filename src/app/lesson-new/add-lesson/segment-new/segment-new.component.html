@@ -1,0 +1,25 @@
+<div class="col-lg-12 row col-md-12 " style="padding: 5%; ">
+  <div class="col-lg-6" style="margin-bottom:200px;">
+    <h3 class="text-left">{{lesson.LessonName}}</h3>
+    <!-- <div class="text-left LessonContent">{{lesson.LessonContent}}</div> -->
+  <div style="white-space: pre-line;">{{lesson.LessonContent}}</div>
+  </div>
+  <div class="col-lg-6">
+    <h4>{{lesson.Segments.length?20 - lesson.Segments.length:20}} Screens Needed</h4>
+
+    <div *ngFor="let segment of lesson.Segments; let i = index" class="row" style="margin-bottom: 3%">
+      <span>{{i+1}}</span>
+      <textarea class="form-control" maxlength="600" (click)="currentscreen =segment"
+       [(ngModel)]="segment.ScreenContent" rows="6" id="seg" name="seg" ></textarea>
+      <span class="wordCount">{{segment.ScreenContent.length?segment.ScreenContent.length:0}}/600</span>
+    </div>
+    <br/>
+    <!-- <p *ngIf="lesson.Segments[0].ScreenContent.length==0"
+       class="Want-to-automaticall">Want to automatically segment your free form copy into screened content? </p> -->
+     <!-- <button *ngIf="lesson.Segments[0].ScreenContent.length==0" style="margin-top: 3%" (click)="addNewSegment()">Yes Please</button> -->
+  
+     <button *ngIf="lesson.Segments[0].ScreenContent.length !=0" style="margin-top: 3%" (click)="addNewSegment()">Add New Screen</button>
+    <button *ngIf="lesson.Segments[0].ScreenContent.length !=0" style="margin-top: 3%" (click)="removeSegment()">Remove Screen</button>
+
+  </div>
+</div>

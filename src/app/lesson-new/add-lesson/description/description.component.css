@@ -1,0 +1,26 @@
+.CourseName {
+  font-family: AcuminPro;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1.13;
+  text-align: left;
+  color: #4a4a4a;
+  margin-bottom: 5%;
+  width: 39em;
+  height: 36px;
+}
+
+.Discription {
+  width: 737px;
+}
+.Saving {
+  margin-top: 5% !important;
+  width: 37em;
+  margin-left: 5%;
+  height: 30px;
+  font-family: AcuminPro;
+  font-size: 20px;
+  line-height: 1.5;
+  text-align: left;
+  color: #7d7d7d;
+}

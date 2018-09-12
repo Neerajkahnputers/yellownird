@@ -1,0 +1,79 @@
+.CourseContent {
+  font-family: AcuminPro;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  color: #4a4a4a;
+  width: 476px;
+}
+.LessonContent {
+  width: 476px;
+  height: 308px;
+  font-family: AcuminPro;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  color: #4a4a4a;
+}
+textarea {
+  float: right;
+  resize: none;
+  width:90%
+}
+.Want-to-automaticall {
+  width: 313.9px;
+  height: 48px;
+  font-family: AcuminPro;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  color: #4a4a4a;
+  margin-left: 10%
+}
+button {
+  width: 132px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: $pastel-purple;
+  margin-left: 10%;
+}
+.textforfreeForm {
+  width: 313.9px;
+  height: 48px;
+  font-family: AcuminPro;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: left;
+  color: #4a4a4a;
+  margin-left: 10%;
+}
+.wordCount {
+  width: 71px;
+  height: 26px;
+  font-family: AcuminPro;
+  font-size: 16px;
+  line-height: 1.63;
+  text-align: left;
+  color: #cccccc !important;
+  margin-left: 10%;
+}
+h4 {
+  font-family: AcuminPro;
+  font-size: 16px;
+  line-height: 1.5;
+  text-align: right;
+  margin-bottom: 5%;
+  color: #4a4a4a;
+
+}
+h3 {
+  font-family: AcuminPro;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1.13;
+  text-align: left;
+  color: #4a4a4a;
+  margin-bottom: 5%;
+  width: 39em;
+  height: 36px;
+}

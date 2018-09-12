@@ -1,0 +1,85 @@
+//  ===============================
+//  Image Styles
+//  ===============================
+
+.container-headline img {
+    max-width: 500px;
+}
+
+.container-headline img {
+    width: 100%;
+    height: auto;
+}
+
+.header-illos {
+    width: 100%;
+    margin: 24px 0 72px;
+    float: left;
+}
+
+img {
+    margin: 0 auto;
+    display: block;
+    width: auto;
+    overflow: visible;
+}
+
+.img-medium,
+.img-small {
+    float: none;
+    margin: 1em auto;
+    text-align: center;
+}
+
+.img-medium{    
+    width: 225px;
+	height: 178px;
+    line-height: 178px;
+}
+
+.img-small {
+    width: 75px;
+    height: 75px;
+    line-height: 75px;
+}
+
+.img-medium img,
+.img-small img {
+    vertical-align: middle;
+}
+
+.img-large__iphone {
+    width: 100%;
+    min-width: 350px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+.img-large__iphone img {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+}
+
+.img-placeholder {
+    width: 100%;
+    height: auto;
+    margin: 0 auto 24px;
+}
+.overflow {
+    overflow: hidden;
+}
+
+
+
+//  Tablet and Larger Screens
+//  =======================================
+
+@media (min-width: 700px){
+    .img-placeholder {
+        width: 50%;
+        float: left;
+        margin-top: 96px;
+        
+        
+    }
+}

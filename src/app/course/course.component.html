@@ -1,0 +1,120 @@
+﻿<div class="col-lg-12" *ngIf="!Shownewlesson">
+
+  <h4 style="text-align:left;padding:1%; color:#884ef9" (click)="backtocourses()"><i class="glyphicon glyphicon-arrow-left"></i> Back to Courses</h4>
+  <h2 class="heading" style="text-align:left"><strong>{{currentCourse.Name}}</strong></h2>
+  <div class="col-lg-5">
+    <div class="row">
+      <form>
+        <div class="form-group">
+          <textarea class="form-control col-lg-6" rows="8" id="comment" disabled="disabled">
+            {{currentCourse.Content}}
+        </textarea>
+        </div>
+        <div class="checkbox col-lg-12">
+          <span class="pull-left">
+            Premium Content
+          </span>
+          <label class="switch col-lg-5 pull-right">
+            <input type="checkbox" style="display:none">
+            <span class="slider round"></span>
+          </label>
+
+        </div>
+        <input class="btn btn-default " type="button" id="btnchange" value="Edit" (click)="changeTextArea()">
+    </form>
+
+
+    </div>
+  </div>
+
+
+
+  <div class="col-lg-6 pull-right">
+    <div class="row">
+      <ul class="nav nav-tabs" role="tablist">
+
+        <li role="presentation" class="{{IsTable7}}"><a (click)="changeTab('IsTable7')" aria-controls="table7" role="tab" data-toggle="tab" *ngIf="acti">Active Lessons</a></li>
+        <li role="presentation" class="{{IsTable8}}"><a (click)="changeTab('IsTable8')" aria-controls="table8" role="tab" data-toggle="tab" *ngIf="draf">Drafts</a></li>
+
+        <li class="pull-right">
+          <input type="button" class="btn btn-success btn-sm" (click)="showAddLesson()" *ngIf="newl" value="New Lesson" />
+
+        </li>
+        <li>
+          <input type="button" class="btn btn-success" value="Add to Staging" *ngIf="addtostaging" data-toggle="modal" data-target="#pushlessons">
+
+        </li>
+        <li><a *ngIf="dele">Delete</a></li>
+        <li><a *ngIf="arch" (click)="archive()">Archive</a></li>
+
+      </ul>
+      <div id="pushlessons" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 align="center">Push Lessons</h2>
+            </div>
+            <div class="modal-body">
+              <p>
+                Congratulations! It looks like you are ready to
+                <br />
+                submit this lesson to queue for beta testing
+              </p>
+              <br>
+              <input type="text" id="lessonpin" placeholder="Enter Pin">
+            </div>
+            <div class="modal-footer">
+              <button (click)="stagingcomplete()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row">
+      <div class="tab-content">
+        <div class="tab-pane {{IsTable7}}">
+
+          <table class="table table-bordered" role="tabpanel">
+            <tr *ngFor="let lesson of currentCourse.LessonList">
+              <td>{{lesson.LessonName}}</td>
+              <td><i class="fa fa-bar-chart" aria-hidden="true"></i></td>
+              <td><i class="fa fa-usd" aria-hidden="true"></i></td>
+
+              <td><i class="fa fa-bell-o" aria-hidden="true"></i></td>
+              <td>{{lesson.AuthorName}}</td>
+              <td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
+            </tr>
+          </table>
+
+
+
+
+        </div>
+
+        <div class="tab-pane  {{IsTable8}}">
+
+          <table class="table table-bordered" role="tabpanel">
+            <tr *ngFor="let draft of currentCourse. DraftList">
+              <td><input type="checkbox" name="lessoncheckbox" style="height:20px;width:20px" (click)="staging()"></td>
+              <td>{{draft.DraftName}}</td>
+              <td><i class="fa fa-bar-chart" aria-hidden="true"></i></td>
+              <td><i class="fa fa-usd" aria-hidden="true"></i></td>
+
+              <td><i class="fa fa-bell-o" aria-hidden="true"></i></td>
+              <td>{{draft.AuthorName}}</td>
+              <td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
+            </tr>
+          </table>
+
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<add-Lesson ActiveCourseId={{ActiveCourseId}} (BackToCourcesList)="changeComponentsCourse($event)" *ngIf="Shownewlesson"></add-Lesson>

@@ -1,0 +1,16 @@
+h3 {
+  font-family: AcuminPro;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 1.13;
+  text-align: left;
+  color: #4a4a4a;
+  margin-bottom: 5%;
+  width: 39em;
+  height: 36px;
+}
+
+.LessonContent {
+  width: 737px;
+}
+

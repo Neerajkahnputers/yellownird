@@ -1,0 +1,437 @@
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="/examples/js/typeahead/0.11.1/typeahead.bundle.js"></script>
+<link href="/jquery.magicsearch.css" rel="stylesheet">
+<script src="/jquery.magicsearch.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+
+<style>
+  .heading {
+    font-size: 35px;
+    color: black;
+  }
+
+  .para1 {
+    font-size: 25px;
+  }
+
+  .heading2 {
+    font-size: 30px;
+    color: black
+  }
+
+  .para2 {
+    font-size: 20px;
+  }
+
+  .para3 {
+    font-size: 17px;
+    color: black;
+  }
+
+  nav li a {
+    color: #884ef9;
+    text-align: center;
+  }
+
+
+
+  .bs-example {
+    font-family: sans-serif;
+    position: relative;
+  }
+
+  .typeahead, .tt-query, .tt-hint {
+    border: 2px solid #CCCCCC;
+    border-radius: 8px;
+    font-size: 22px; /* Set input font size */
+    height: 30px;
+    line-height: 30px;
+    outline: medium none;
+    padding: 8px 12px;
+    width: 450px;
+  }
+
+  .typeahead {
+    background-color: #FFFFFF;
+  }
+
+    .typeahead:focus {
+      border: 2px solid #0097CF;
+    }
+
+  .tt-query {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+  }
+
+  .tt-hint {
+    color: #999999;
+  }
+
+  .tt-menu {
+    background-color: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    margin-top: 12px;
+    padding: 8px 0;
+    width: 422px;
+  }
+
+  .tt-suggestion {
+    font-size: 22px; /* Set suggestion dropdown font size */
+    padding: 3px 20px;
+  }
+
+    .tt-suggestion:hover {
+      cursor: pointer;
+      background-color: #0097CF;
+      color: #FFFFFF;
+    }
+
+    .tt-suggestion p {
+      margin: 0;
+    }
+</style>
+
+<div class="content">
+  <!-- <div class="row">
+           <div class="col-xs-1">
+
+               <img src="{{NavImage}}" width="30" height="30">
+           </div>
+           <div class="col-xs-2">
+               <h2>The BirdHouse</h2>
+           </div>
+           <div class="col-xs-2">
+               <h3>Draft</h3>
+           </div>
+           <div class="col-xs-2">
+               <h3> Help</h3>
+           </div>
+           <div class="col-xs-1">
+               <button> Next Section</button>
+           </div>
+           <div class="col-xs-1">
+           </div>
+           <div class="col-xs-1">
+               <img src="{{NotiImage}}" width="30" height="30" align="right">
+           </div>
+           <div class="col-xs-1">
+               <img src="{{ProfileImage}}" width="30" height="30" align="right">
+           </div>
+       </div>
+  -->
+
+  <div class="col-lg-12" style="z-index:200;">
+    <button class="prev pull-left" (click)="prevbutton()">Previous</button>
+
+
+    <button class="next pull-right" (click)="nextbutton()">Next</button>
+  </div>
+
+  <nav class="nav navbar" style="width:100%">
+
+    <ul class="nav navbar-nav megaMenu" role="tablist" style="width:100%">
+      <li style="width:20%;" class="active {{IsDescription}}" role="presentation"><a (click)="changeTab('IsDescription')" aria-controls="description1" role="tab" data-toggle="tab">Description</a></li>
+      <li style="width:20%;" class="{{IsFreeform}}" role="presentation"><a (click)="changeTab('IsFreeform')" aria-controls="freeform2" role="tab" data-toggle="tab">Free Form</a></li>
+      <li style="width:20%;" class="{{IsSegmentation}}" role="presentation"><a (click)="changeTab('IsSegmentation')" aria-controls="segmentation3" role="tab" data-toggle="tab">Segmentation</a></li>
+      <li style="width:20%;" class="{{IsTemplates}}" role="presentation"><a (click)="changeTab('IsTemplates')" aria-controls="templates4" role="tab" data-toggle="tab">Templates</a></li>
+      <li style="width:20%;" class="{{IsPreview}}" role="presentation"><a (click)="changeTab('IsPreview')" aria-controls="preview5" role="tab" data-toggle="tab">Preview</a></li>
+    </ul>
+  </nav>
+
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane {{IsDescription}} " id="description1">
+      <div class="col-lg-12">
+        <div class="col-lg-4">
+
+          <h3><label for="lessontitle"> Title</label></h3>
+          <br />
+          <h3><label for="des"> Description</label></h3>
+          <br />
+          <h3> <label for="tags">Tags</label></h3>
+        </div>
+        <div class="col-lg-4">
+          <div class="form">
+            <div class="form-group">
+              <br />
+              <input type="text" class="form-control" [(ngModel)]="newLesson.lessontitle" placeholder="Enter title over here">
+            </div>
+            <div class="form-group">
+              <br />
+              <textarea class="form-control" id="des" placeholder="Try to keep to 3 or 4 sentences" [(ngModel)]="newLesson.lessoncontent"></textarea>
+            </div>
+            <div class="form-group">
+
+
+
+              <div class="bs-example">
+                <br />
+                <input type="text" class="typeahead tt-query" autocomplete="off" spellcheck="false" placeholder="Add a tag">
+              </div>
+
+
+            </div>
+
+
+          </div>
+        </div>
+        <div class="col-lg-4">
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <div role="tabpanel" class="tab-pane {{IsFreeform}}" id="freeform2">
+      <div class="col-lg-12">
+        <div class="col-lg-7 col-lg-offset-3">
+          <dl>
+            <dt class="heading text-center text-capitalize" style="margin-bottom:10px;">
+              {{newLesson.lessontitle}}
+            </dt>
+            <dd>{{newLesson.lessoncontent}}</dd>
+          </dl>
+
+        </div>
+
+      </div>
+    </div>
+
+    <div role="tabpanel" class="tab-pane {{IsSegmentation}}" id="segmentation3">
+
+      <div class="col-lg-12">
+        <div class="col-lg-5 well well-lg pull-left">
+          <dl>
+            <dt style="font-size:28px; margin-bottom:10px;">{{newLesson.lessontitle}}</dt>
+            <dd>{{newLesson.lessoncontent}}</dd>
+          </dl>
+
+
+        </div>
+        <div class="col-lg-6 pull-right">
+          <div class="row">
+            <div class="col-lg-12">
+              <p class="pull-left" style="font-size:20px"><span class="glyphicon glyphicon-eye-open" style="color:mediumpurple"></span> Preview </p>
+              <p class="pull-right">{{20-screenCount}} screens needed</p>
+
+            </div>
+          </div>
+          <div class="row col-lg-12" *ngFor="let i of newLesson.Segments">
+            <br />
+            <!--<segment [screenId]="i.screenId" (segmentData)="emitscreenContent($event)"></segment>-->
+            <br />
+            <br />
+          </div>
+          <div class="row">
+
+            <br />
+            <button (click)="addscreen()" id="addscreenbutton">Add Screen</button>
+            <button (click)="removescreen()" id="removescreenbutton">Remove Screen</button>
+          </div>
+          <div class="row">
+            <br />
+            <br />
+            <p class="pull-left">Want to automatically segment your free form copy into a screened content?</p>
+
+
+          </div>
+          <div class="row">
+            <button type="button" data-target="#autoseg" data-toggle="modal">Yes, Please</button>
+            <div id="autoseg" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+
+                    <h4 class="modal-title">Auto Segment</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Segment the content into separate screens every</p>
+                    <input type="text" id="segnum" [(ngModel)]="SegmentSize" />
+                    <p>characters.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Not Now</button>
+                    <button type="button" class="btn btn-default" >Segment</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <div role="tabpanel" class="tab-pane row col-lg-12 {{IsTemplates}}" id="templates4">
+
+
+      <div class="col-lg-4">
+
+        <div class="col-lg-12" *ngFor="let i of newLesson.Segments;let segmentIndex = index">
+
+
+          <span class="col-lg-1 ">{{segmentIndex+1}}</span>
+
+
+          <p class="col-lg-9 well" [innerText]="i.screenId"
+             style="overflow-y:scroll;height:100px" (click)="currentSegmentIndex = segmentIndex;">{{i.screenContent}}</p>
+          <br />
+
+
+        </div>
+
+      </div>
+      <div class="col-lg-4">
+        <div class="col-lg-12">
+          <div class="row">
+            <div data-toggle="collapse" data-target="#contenttemplates">
+              <h3>
+                Content Templates(2)
+              </h3>
+            </div>
+            <div id="contenttemplates" class="collapse col-lg-12">
+
+              <div class="w3-card-4 w3-padding-16 col-lg-5" *ngFor="let template of templateList" style="margin:5px;">
+                <img src="{{template.TemplateImg}}" (click)="setTemplateId(template.TemplateId);" height="100" width="100">
+                <div class="w3-container w3-center">
+                  <p style="font-size: 15px; color: black; font-weight: bold">{{template.TemplateName}} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div data-toggle="collapse" data-target="#studenttemplates">
+              <h3>
+                Question Templates(4)
+              </h3>
+            </div>
+            <div id="studenttemplates" class="collapse col-lg-12">
+
+              <div class="w3-card-4 w3-padding-16 col-lg-5" *ngFor="let template2 of templateList2" style="margin:5px;">
+                <img src="{{template2.TemplateImg}}" (click)="setTemplateId(template2.TemplateId);" height="100" width="100">
+                <div class="w3-container w3-center">
+                  <p style="font-size: 15px; color:black; font-weight: bold">{{template2.TemplateName}} </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <button class="btn btn-success" type="button" (click)="onLessonSaveClick()">Save</button>
+          </div>
+
+
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="col-lg-12">
+          <div class="pull-left row">
+            <p style="font-size:20px;"> <span class="glyphicon glyphicon-eye-open" style="color:mediumpurple"></span> Preview</p>
+            <br />
+            <br />
+          </div>
+      <div class="row">
+            <!--<app-template-text-and-images *ngIf="newLesson.Segments[this.currentSegmentIndex].selectedTemplateId == 2"></app-template-text-and-images>
+             <app-template-true-and-false *ngIf="newLesson.Segments[this.currentSegmentIndex].selectedTemplateId==3"> </app-template-true-and-false>
+            <app-template-multiple-choice *ngIf="newLesson.Segments[this.currentSegmentIndex].selectedTemplateId==4"> </app-template-multiple-choice>
+            <app-template-multiple-select *ngIf="newLesson.Segments[this.currentSegmentIndex].selectedTemplateId==5"> </app-template-multiple-select>
+            <app-template-fill-in-the-blanks *ngIf="newLesson.Segments[this.currentSegmentIndex].selectedTemplateId==6"> </app-template-fill-in-the-blanks>-->-->
+           
+           
+          </div>
+          <div class="row">
+            <br />
+            <br/>
+            <p class="pull-left">
+              Make sure you select a template
+            </p>
+            <br/>
+            <button id="addquestionbutton" >Add Question</button> <button id="nextscreenbutton">Next Screen</button>
+          </div>
+        </div>
+
+
+      </div>
+
+
+
+
+    </div>
+
+
+
+    <div role="tabpanel" id="preview5" class="tab-pane row col-lg-12 {{IsPreview}}">
+
+      <div class="col-lg-4">
+        <img src="{{MobileImage}}" width="500" height="500">
+      </div>
+      <div class="col-lg-2">
+
+      </div>
+      <div class="col-lg-6">
+        <div class="row">
+          <div class="col-lg-1">
+            <img src="{{ShareImage}}" width="20" height="20">
+          </div>
+          <div class="col-lg-3">
+            <h4>Share</h4>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-1">
+            <img src="{{HideImage}}" width="25" height="25">
+          </div>
+          <div class="col-lg-1">
+            <h4>Hide Comments</h4>
+          </div>
+
+        </div>
+        <div class="row">
+          <div class="col-lg-1">
+            <input type="radio" id="f5" name="group40">
+          </div>
+          <div class="col-lg-1">
+            <h5>Alphonso J</h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <textarea id="TextArea2" rows="2" cols="20" placeholder="type your comment here">
+                            </textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            9/20 screens
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            Previous Screen
+          </div>
+          <div class="col-lg-2">
+            Next Screen
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-3">
+            <h6>Want to jump to a screen?</h6>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</div>

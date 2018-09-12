@@ -1,0 +1,50 @@
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  
+  .btnupload {
+    border: 2px solid gray;
+    color: gray;
+    background-color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: bold;
+  }
+  
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+  .Bitmap {
+    width: 108px;
+    height: 108px;
+  }
+  .previewContainer {
+  
+    font-family: AcuminPro;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: left;
+    color: #7d7d7d;
+  }
+
+  .title
+  {
+   margin-left:20px;
+   border:1px solid grey;
+  }
+
+  .description
+  {
+    margin-left:20px;
+  }
+  .heading
+  {
+    margin-left:20px;
+  }

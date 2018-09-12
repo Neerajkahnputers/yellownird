@@ -1,0 +1,163 @@
+﻿
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <!--<a href="#" class="btn btn-info btn-lg">
+
+      </a>-->
+      
+     
+      <a class="navbar-brand">
+        <span id="squareicon" class="glyphicon glyphicon-stop"></span>The Birdhouse   
+      </a>
+      <a class="navbar-brand" routerLink="Course-new/:id" style="margin-top:2px;" >
+        <span *ngIf="showCancelButton" style="font-size:20px; color:grey">Exit</span>
+      </a>
+     
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+  
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+   <!-- <ul class="nav navbar-nav">
+
+        <li><a href="#" >Library</a></li>
+       
+        <li><a href="#">Help</a></li>
+
+      </ul>
+    -->
+
+    <button style="width:132px;height:40px;margin-left:750px;" *ngIf="showLessonButton" data-toggle="modal" data-target="#savelessonsmodal">Submit</button>
+     
+    <div class="modal fade" id="savelessonsmodal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <img src="/assets/images/rocket.png">
+              </div>
+            <div class="row"> 
+                <p style="font-family:arial;font-size:24px;font-weight:500; color:#4a4a4a;">Submission Time</p>
+              </div>
+            <div class="row" style="margin-top:10px;">
+                <p style="font-size:16px;color:#4a4a4a; font-family:arial;">Congratulations! It looks like you are ready 
+                    to <br/>submit this lesson to queue for beta testing.
+                    </p>
+              </div>
+            <div class="row" style="margin-top:15px;">
+                <button style="width:216px; margin-left:180px;" (click)="SaveLesson()">Submit for Testing</button>
+              </div>
+             <div class="row" style="margin-top:10px;">
+               <a href="#" style="text-decoration:none;"> <p style="font-size:16px;font-family:arial;color: #7d7d7d; text-decoration:none;" data-dismiss="modal">Not Ready Yet</p></a>
+               </div>
+             
+            
+            </div>
+          
+
+         </div>
+
+        </div>
+
+
+        </div>
+
+
+    <ul class="nav navbar-nav navbar-right" *ngIf="isLogged" style="margin-bottom:-10px;">
+        <li><a href="#"></a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+           aria-expanded="false"><img [src]= "photoURL()"  width="30" height="30"/> </a>
+          <ul class="dropdown-menu">
+            <li><a href="#">{{profile.FirstName}} {{profile.LastName}}</a></li>
+            <li><a (click)="signOut()">Log Out</a></li>
+
+          </ul>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right" *ngIf="!isLogged">
+        <li>
+          <button class="btnNew" id="signInButton" 
+                  data-toggle="modal" data-target="#myModal">
+            Sign In
+          </button>
+        </li>
+        <li>
+          <button class="btnNew" id="requestAccessButton"
+                  data-toggle="modal" data-target="#myModal2">
+            Request
+          </button>
+        </li>
+
+      </ul>
+      
+
+     
+
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+<div id="myModal" class="modal fade" role="dialog">
+
+  <app-login *ngIf="!isLogged" (close-Modal)="closeModalFunc()" (register-In)="changeLogin()"></app-login>
+</div>
+
+<div id="myModal2" class="modal fade" role="dialog">
+<app-request-access *ngIf="!isLogged" (close-Modal)="closeModalFunc()"></app-request-access>
+  </div>
+
+<app-side-bar *ngIf="isLogged">
+
+</app-side-bar>
+<div class="row">
+  <!-- <div class="col-lg-2" *ngIf="isLogged">
+
+    </div>-->
+  <div class="col-lg-12">
+    <router-outlet>
+
+    </router-outlet>
+  </div>
+</div>
+<div class="col-lg-12" *ngIf="!isLogged">
+  <div class="col-lg-4">
+  </div>
+  <div class="col-lg-2">
+    <button *ngIf="hideme3==true" data-toggle="modal" data-target="#myModal" id="signInButton2" style="font-family:arial;">Sign In</button>
+  </div>
+
+  <div class="col-lg-3">
+    <button style="background-color:lightgrey; color: #4a4a4a;; font-family:arial;" *ngIf="hideme4==true" id="requestAccessButton2" data-toggle="modal" data-target="#myModal2">Request Access</button>
+  </div>
+  <div class="col-lg-2 ">
+  </div>
+</div>
+<div class="col-lg-12" style="margin-top:50px;">
+  </div>
+
+<div class="footer" *ngIf="isLogged">
+  <nav>
+    <ul class="list-footer">
+            <p>© 2017 Yellowbird Financial, Inc. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Atlanta Made</p>     
+    </ul>
+  </nav>
+</div>
+
+<div class="footer1" *ngIf="!isLogged">
+    <nav>
+      <ul class="list-footer">
+              <p>© 2017 Yellowbird Financial, Inc. &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Atlanta Made</p>     
+      </ul>
+    </nav>
+  </div>
+
+  <div *ngIf="loading">
+    <div class="backdrop">
+      <div class="loading">Loading&#8230;</div></div>
+  </div>

@@ -1,0 +1,262 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+  
+</style>
+
+
+
+<div class="content">
+
+
+  <div class="col-lg-12">
+    <div class="col-lg-4 pull-left" style="margin-bottom:40px;">
+      <div class="row" *ngIf="editableprofile" >
+        <div style="margin-bottom: 5px;">
+          
+          <button style="background-color: white !important;" >
+            <img id="profileimage" class="img img-responsive img-circle" [src]="photoURL()" style="width: 80px; height: 80px; opacity: 0.5"
+                 data-target="#imagedialog" data-toggle="modal" title="Change Profile Image"/>
+          </button>
+          
+        </div>
+
+        <form id="imageform">
+          <div class="form-group">
+           
+            <div id="imagedialog" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Upload Image</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div style="height:250px">
+                      <img id="imgpreview" [src]="" style='border:none; height: 100%; width: 100%; object-fit: contain' alt="No Image Selected" />
+                    </div>
+                    <input type="file" id="fileInput" value="" name="fileName" [(ngModel)]="fileName" />
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-default" (click)="changeProfileImage($event)">Save</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <br />
+            <input class="form-control" type="textbox"  placeholder="First Name" name="FirstName" [(ngModel)]="profile.FirstName"/>
+            <br/>
+            <input type="textbox" class="form-control" placeholder="Last Name" name="LastName" [(ngModel)]="profile.LastName" />
+          </div>
+          <div class="form-group">
+
+            <textarea class="form-control" id="bio" placeholder="A Quick Bio of Yourself" name="bio" [(ngModel)]="profile.Bio" style="resize:none"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="weblog" placeholder="Web/Blog" name="weblog" [(ngModel)]="profile.WebBlog">
+
+          </div>
+
+          <div>
+            <p style="font-size: 12px; line-height: 1.33; text-align: left; color: #4a4a4a; margin-left: 45px;" id="emailidlabel">Email Address</p>
+            <input type="email" class="form-control" id="email" placeholder="Enter Email" name="email" [(ngModel)]="profile.EmailId" />
+
+          </div>
+          <div>
+            <p style="font-size: 12px; line-height: 1.33; text-align: left; color: #4a4a4a; margin-left: 45px;"id="passwordlabel">Password</p>
+            <input type="password" class="form-control" id="password" placeholder="Enter Password" name="password" [(ngModel)]="profile.Password">
+
+          </div>
+
+          <button type="button" class="btn btn-success" id="savethisprofile" (click)="saveprofile();" style="margin-top: 20px; margin-left:30px; width: 132px; height: 40px; border-radius: 3px; background-color: #86d190;color:white; font-family:arial; font-size:16px; text-align:center;">Save Profile</button>
+        </form>
+
+      </div>
+      <div class="row pull-left" *ngIf="savedprofile">
+        <button style="background-color: white !important" id="profileimage2">
+          <img class="img-circle img-responsive" [src]="photoURL()" style="height: 80px;width: 80px;"/>
+        </button>
+        <br />
+        <br />
+        <br />
+        <div class="row">
+          <textarea style="font-size: 25px; color: #4a4a4a; font-weight: bold; line-height: 1.13; margin-left: 30px; margin-bottom: 20px; resize:none; overflow:hidden; background:#fff; border:1px solid white;" class="pull-left fullname" cols="20" rows="1"  placeholder="Your full name" disabled *ngIf="(profile.FirstName.length==0 && profile.LastName.length==0) || (profile.FirstName==null && profile.LastName==null)"></textarea>
+          <a style="font-size: 25px; color: #4a4a4a; font-weight: bold; line-height: 1.13; margin-bottom: 20px; text-decoration:none; margin-bottom:5px;margin-left:30px;">{{profile.FirstName}} {{profile.LastName}}</a>
+          </div>
+          <br/>
+          
+          <div class="row">
+          <textarea style="font-size: 16px; color:grey; line-height: 1.5; margin-left: 30px;  margin-bottom: 20px; resize:none; background:#fff; border:1px solid white" class="pull-left" cols="32" rows="3" placeholder="Quick bio of yourself" disabled >{{profile.Bio}}</textarea>
+          </div>
+          <div class="row">
+          <textarea style="color:#884ef9; margin-left: 30px; margin-bottom: 20px; resize:none; background:#fff;font-size:20px; border:1px solid white" class="pull-left" cols="26" rows="1" placeholder="Website/Blog" disabled *ngIf="profile.WebBlog.length==0"></textarea>
+          </div>
+          <br />
+         
+          <div class="row">
+          <a style="color:#884ef9; margin-left: 30px; margin-bottom: 20px; resize:none; background:#fff;font-size:20px; border:1px solid white;text-decoration:none;" href="http://{{profile.WebBlog}}" target="_blank" *ngIf="profile.WebBlog.length>0">{{profile.WebBlog}}</a>
+          </div>
+          <br />
+        
+          <div class="row">
+          <p style="font-size: 12px; line-height: 1.33; text-align: left; color: #4a4a4a; margin-left: 45px;" id="emailidlabel2" >Email Address</p>
+          <input type="email" class="form-control" id="email1" placeholder="Enter Email" value= {{profile.EmailId}}  disabled="disabled" style="background-color: lightyellow; margin-left: 30px;" />
+          </div>
+          <br/>
+          <div class="row">
+          <p style="font-size: 12px; line-height: 1.33; text-align: left; color: #4a4a4a; margin-left: 45px;" id="passwordlabel2">Password</p>
+          <input type="password" class="form-control" id="password1" placeholder="Enter Password" value= {{profile.Password}} disabled="disabled" style="background-color: lightyellow; margin-left: 30px;">
+          </div>
+          <div class="form-group">
+           
+            <button type="button" class="btn btn-default" (click)="editprofile()" id="editthisprofile" style="margin-top: 20px; margin-left:30px; font-size:16px; width: 132px; height: 40px;border-radius: 3px;background-color: #e9e9e9; color: #7d7d7d; text-align: center; font-family:arial;">Edit Profile</button>
+          </div>
+       
+      </div>
+
+    </div>
+    <div class="col-lg-8">
+
+      <div class="row">
+        <div class="col-lg-8">
+          <br />
+          <br />
+          <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation" class="{{IsTable5}}">
+              <a (click)="changeTab('IsTable5')" aria-controls="table5" role="tab" data-toggle="tab">My Lessons</a>
+            </li>
+            <li role="presentation" class="{{IsTable6}}">
+              <a (click)="changeTab('IsTable6')" aria-controls="table6" role="tab" data-toggle="tab">Drafts</a>
+            </li>
+            <li role="presentation" class="{{IsTable4}}">
+              <a (click)="changeTab('IsTable4')" aria-controls="table4" role="tab" data-toggle="tab">Stats</a>
+            </li>
+
+
+
+
+
+          </ul>
+        </div>
+      </div>
+
+      <br />
+      <br />
+
+
+      <div class="tab-content" *ngIf="havelessons">
+
+        <div class="tab-pane {{IsTable4}}">
+          <table role="tabpanel" cellpadding="5" cellspacing="5" class="table table-bordered">
+            <tr>
+              <th colspan="10" width="40%"><p style="font-size: 16px; color:#4a4a4a;">Lesson</p></th>
+              <th colspan="3" width="20%"><p style="font-size: 16px; color:#4a4a4a;">Opens</p></th>
+              <th colspan="3" width="20%"><p style="font-size: 16px; color:#4a4a4a;">Completed</p></th>
+              <th colspan="3" width="20%"><p style="font-size: 16px; color:#4a4a4a;">Ratio</p></th>
+              <th colspan="3" width="20%"><p style="font-size: 16px; color:#4a4a4a;">Earned</p></th>
+            </tr>
+            <tr *ngFor="let Stat of StatsList">
+              <td colspan="10" width="40%">
+                <p style="font-size: 16px; color:#4a4a4a;">{{Stat.LessonName}}</p>
+                <br>
+                <p style="font-size: 12px;color: #b0b0b0;">  {{Stat.CourcePublish}} </p>
+              </td>
+              <td colspan="3" width="20%">
+                <p style="font-size: 16px; color:#4a4a4a;">{{Stat.Opens}}</p>
+              </td>
+              <td colspan="3" width="20%">
+                <p style="font-size: 16px; color:#4a4a4a;"> {{Stat.Completed}}</p>
+              </td>
+              <td colspan="3" width="20%">
+                <p style="font-size: 16px; color:#4a4a4a;">{{Stat.Ratio}}%</p>
+              </td>
+              <td colspan="3" width="20%">
+                <p style="font-size: 16px; color:#4a4a4a;">${{Stat.Earned}}</p>
+              </td>
+            </tr>
+
+          </table>
+        </div>
+
+        <div class="tab-pane {{IsTable5}}" >
+          <table role="tabpanel" class="table table-bordered" >
+            <tr *ngFor="let lesson of LessonList">
+              <td  width="50%">{{lesson.LessonName}}</td>
+              <td  width="10%"><i class="fa fa-bar-chart" style="color:#884ef9;" aria-hidden="true"></i></td>
+              <td width="10%"><i class="fa fa-usd" style="color:#884ef9;" aria-hidden="true"></i></td>
+              <td width="10%">{{profile.FirstName}} {{profile.LastName}}</td>
+              <td width="10%">
+                <img [src]="photoURL() " class="img-circle" height="30" width="30"/>
+                
+              </td>
+
+              <td colspan="1" width="10%"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
+            </tr>
+
+          </table>
+          <div *ngIf="LessonList.length==0">
+            <img src='/assets/images/nolessons.png' style="margin-bottom: 60px; width: 153px; height: 138px;">
+             <p style="font-size: 32px; color: #4a4a4a; font-weight: bold; line-height: 1.13;">Nothing to See Here!</p>
+             <br/>
+             <p>You haven't staged any lesson yet.<br/>
+             </p>
+             <!-- <br/>
+             <p align="center"><button id="startlessonbutton" class="btn btn-success">Start A Lesson</button>
+             </p> -->
+           </div>
+        </div>
+
+
+
+
+
+        <div class="tab-pane {{IsTable6}}">
+          <table role="tabpanel" class="table table-bordered">
+            <tr *ngFor="let Draft of DraftList">
+              <td colspan="9" width="50%">{{Draft.LessonName}}</td>
+              <td width="10%"><i class="fa fa-bar-chart" style="color:#884ef9;" aria-hidden="true"></i></td>
+              <td width="10%"><i class="fa fa-usd" style="color:#884ef9;" aria-hidden="true"></i></td>
+              <td colspan="4" width="10%">{{Draft.AuthorName}}</td>
+              <td width="10%"><img [src]="photoURL()" class="img-circle" width="30" height="30" /></td>
+              <td width="10%"><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
+            </tr>
+          </table>
+          <div *ngIf="DraftList.length==0">
+            <img src='/assets/images/nolessons.png' style="margin-bottom: 60px; width: 153px; height: 138px;">
+             <p style="font-size: 32px; color: #4a4a4a; font-weight: bold; line-height: 1.13;">Nothing to See Here!</p>
+             <br/>
+             <p>You dont have any lesson in draft.<br/>
+             </p>
+             <!-- <br/>
+             <p align="center"><button id="startlessonbutton" class="btn btn-success">Start A Lesson</button>
+             </p> -->
+           </div>
+        </div>
+
+      </div>
+      
+      <div class="tab-content" *ngIf="havenolessons">
+       <img src='/assets/images/nolessons.png' style="margin-bottom: 60px; width: 153px; height: 138px;">
+        <p style="font-size: 32px; color: #4a4a4a; font-weight: bold; line-height: 1.13;">Nothing to See Here!</p>
+        <br/>
+        <p>You haven't started any lessons yet.<br/>
+          Want to start one?
+        </p>
+        <br/>
+        <p align="center"><button id="startlessonbutton" class="btn btn-success">Start A Lesson</button>
+        </p>
+      </div>
+
+      </div>
+  </div>
+
+
+
+
+</div>
+
+

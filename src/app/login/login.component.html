@@ -1,0 +1,33 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<form id="loginform">
+
+<div >
+  <div class="modal-dialog" id="LoginModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="modal-title">
+          <p id="loginHeader">
+            Sign into your Yellowbird Birdhouse
+            <br />
+            account. Don't have an account, Sign up.
+          </p>
+        </div>
+      </div>
+      <div class="modal-body">
+        <input type="email" name="EmailId" placeholder="Email" [(ngModel)]="currentUser.EmailId" class="required email" id="mce-FNAME" email>
+        <br />
+        
+        <input type="password" name="Password" placeholder="Password" (keyup.enter)="submit()" [(ngModel)]="currentUser.Password" id="loginPassword">
+        <br />
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" (click)="closeModalFunction()"  class="button">Cancel</button>
+        <button type="button" (click)="submit()" class="button">Sign in</button>
+        <a>Forgot Password?</a>
+      </div>
+    </div>
+  </div>
+</div>
+</form>

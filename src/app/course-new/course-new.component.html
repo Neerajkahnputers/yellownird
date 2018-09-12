@@ -1,0 +1,155 @@
+﻿<div>
+<div class="col-lg-12" *ngIf="!Shownewlesson">
+
+  
+ 
+  <div class="col-lg-5" style="border-right:1px solid lightgrey">
+    <div class="row">
+        <p style="text-align: left; padding: 1%; color: #884ef9">
+            <a  routerLink="/Library" id="backtocourses" style="margin-left:10px;" ><i class="fa fa-long-arrow-left"></i> Back to Courses</a>
+          </p>
+      </div>
+      <div class="row" *ngIf="editname">
+          <textarea class="coursename" rows="1" [(ngModel)]="currentCourse.CourseName" style="resize:none;">{{currentCourse.CourseName}}</textarea>
+          </div>
+   
+          <div class="row" *ngIf="displayname">
+              <textarea class="coursename" rows="1" [(ngModel)]="currentCourse.CourseName" style="resize:none; background:#FFF;" disabled>{{currentCourse.CourseName}}</textarea>
+              </div>
+
+    <div class="row">
+      
+        <div class="row" *ngIf="editcontent">
+          <textarea style="font-size:20px;font-family:arial;color:#7d7d7d;overflow-y:scroll; overflow-x:hidden;height:300px;" class="col-lg-6 " rows="10" id="comment" [(ngModel)]="currentCourse.CourseContent">
+            {{currentCourse.CourseContent}}
+        </textarea>
+        </div>
+        <div class="row" *ngIf="displaycontent">
+          <div style="margin-top:10px;margin-left:60px; width:380px; height:300px; overflow-y:scroll; overflow-x:hidden; border:1px solid lightgrey;">
+           <p style="font-size:20px;font-family:arial;color:#7d7d7d;"> {{currentCourse.CourseContent}} </p>
+            </div>
+          </div>
+       <div class="row" style="margin-bottom:40px;">
+        <input class="editorsave" type="button" id="btnchange"  [attr.value]="courseContentDisabled?'Save':'Edit'" (click)="changeTextArea()">
+      </div>
+
+
+    </div>
+
+   
+
+  </div>
+
+
+
+  <div class="col-lg-7 pull-right">
+    <div class="row">
+      <ul class="nav nav-tabs" role="tablist">
+
+        <li role="presentation"
+            class="{{IsTable7}}"><a (click)="changeTab('IsTable7')" aria-controls="table7" role="tab" data-toggle="tab">Active Lessons</a></li>
+        <li role="presentation" class="{{IsTable8}}"><a (click)="changeTab('IsTable8')" aria-controls="table8" role="tab" data-toggle="tab">Drafts</a></li>
+
+        <li>
+          <a class="stagingbutton" data-toggle="modal" data-target="#pushlessons" *ngIf="selecteddrafts.length>0">Add to Staging</a>
+          </li>
+
+        <li class="pull-right">
+          <a class="addalesson" [routerLink]="['/add-newLesson', currentCourse.Id]" *ngIf="newl">New Lesson</a>
+
+        </li>
+
+      </ul>
+      <div id="pushlessons" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 align="center">Push Lessons</h2>
+            </div>
+            <div class="modal-body">
+              <p>
+                Congratulations! It looks like you are ready to
+                <br />
+                submit this lesson to queue for beta testing
+              </p>
+              <br>
+              <input type="text" id="lessonpin" placeholder="Enter Pin">
+            </div>
+            <div class="modal-footer">
+              <button data-toggle="modal" data-target="#pushlessons" (click)="AddtoStaging()">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+    <div class="row">
+      <div class="tab-content">
+        <div class="tab-pane {{IsTable7}}">
+
+          <table class="table table-bordered" role="tabpanel">
+            <tr *ngFor="let lesson of currentCourse.LessonList">
+              <td>{{lesson.LessonName}}</td>
+              <td><i class="fa fa-bar-chart" style="color:#884ef9;" aria-hidden="true"></i></td>
+              <td><i class="fa fa-usd" style="color:#884ef9;" aria-hidden="true"></i></td>
+              <td>{{profile.FirstName}} {{profile.LastName}}</td>
+              <td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
+            </tr>
+          </table>
+          <div *ngIf="currentCourse.LessonList.length==0">
+            <img src='/assets/images/nolessons.png' style="margin-top:80px; width: 153px; height: 138px;">
+             <p style="font-size: 32px; color: #4a4a4a; font-weight: bold; line-height: 1.13;margin-top:40px;">Nothing to See Here!</p>
+             <br/>
+             <p>You dont have any lesson staged from draft<br/>
+              Go to draft for staging the lessons.
+             </p>
+             <!-- <br/>
+             <p align="center"><button id="startlessonbutton" class="btn btn-success">Start A Lesson</button>
+             </p> -->
+           </div>
+
+
+
+        </div>
+
+        <div class="tab-pane  {{IsTable8}}">
+
+          <table class="table table-bordered" role="tabpanel">
+            <tr *ngFor="let draft of currentCourse.DraftList; let i=index;">
+              <td>
+                
+                <input type="checkbox" name="lessoncheckbox" 
+                style="height:20px;width:20px;"
+                (change)="selectionChange($event.srcElement,draft,i)">
+               
+                </td>
+              <td>{{draft.DraftName}}</td>
+              <td><i class="fa fa-bar-chart" style="color:#884ef9;" aria-hidden="true"></i></td>
+              <td><i class="fa fa-usd" style="color:#884ef9;" aria-hidden="true"></i></td>
+              <td> {{profile.FirstName}} {{profile.LastName}}</td>
+              <td><i class="fa fa-ellipsis-v" aria-hidden="true"></i></td>
+            </tr>
+          </table>
+          <div *ngIf="currentCourse.DraftList.length==0" >
+            <img src='/assets/images/nolessons.png' style="margin-top:80px; width: 153px; height: 138px;">
+             <p style="font-size: 32px; color: #4a4a4a; font-weight: bold; line-height: 1.13;margin-top:40px;">Nothing to See Here!</p>
+             <br/>
+             <p >You dont have any lesson in draft.<br/>
+             </p>
+             <!-- <br/>
+             <p align="center"><button id="startlessonbutton" class="btn btn-success">Start A Lesson</button>
+             </p> -->
+           </div>
+
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<add-Lesson ActiveCourseId={{ActiveCourseId}} (BackToCourcesList)="changeComponentsCourse($event)" *ngIf="Shownewlesson"></add-Lesson>
+</div>
+

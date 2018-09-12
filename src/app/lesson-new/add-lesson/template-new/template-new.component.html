@@ -1,0 +1,531 @@
+﻿<div class="col-lg-12 row col-md-12 " style="padding: 5%">
+  <div class="col-lg-4">
+    <h3 class="text-left">{{lesson.LessonName}}</h3>
+    <div>
+
+      <div class="row screens" (click)="selectSegment(segment)" [ngClass]="this.IsSegmentSelected == true && this.currentSegmentIndex == this.lesson.Segments.indexOf(segment) ? 'selectseg' : 'unselectseg'"
+        *ngFor="let segment of lesson.Segments; let i = index;">
+        <img src="../../../../assets/images/new.png" style="width: 10%;float: left" *ngIf="this.IsSegmentSelected == true 
+      && this.currentSegmentIndex == this.lesson.Segments.indexOf(segment) 
+      &&  this.lesson.Segments[currentSegmentIndex].TemplateId" />
+        <div class="text-justify" style="float: right; width: 90%;padding: 2%"> {{segment.ScreenContent}} </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="col-lg-4" *ngIf="IsSegmentSelected">
+    <div class="col-lg-12">
+      <a class="btn bounds" role="button" data-toggle="collapse" href="#collapseExample" aria-expanded="false"
+        aria-controls="collapseExample">
+        <label style="width: 100%;padding-right: 5%">
+          Content Templates (2)
+          <span class="right" style="float: right"><i class="fa fa-address-book"></i></span>
+        </label>
+      </a>
+      <div class="collapse" id="collapseExample">
+        <div class="well" style="border: none">
+          <div class="w3-card-4 w3-padding-16 col-lg-5" (click)="selectTemplateId(template)" *ngFor="let template of templateList1;"
+            style="margin:5px;" [ngClass]="this.lesson.Segments[this.currentSegmentIndex].TemplateId == template.Id ? 'selectseg' : 'unselectseg'">
+            <img src="{{template.TemplateImage}}" height="60" width="60">
+            <div class="w3-container w3-center">
+              <p style="font-size: 12px; color: black; font-weight: bold">{{template.TemplateName}} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <a class="btn bounds" role="button" data-toggle="collapse" href="#collapseExample1" aria-expanded="false"
+        aria-controls="collapseExample">
+        <label style="width: 100%;padding-right: 5%">
+          Question Templates (4)
+          <span class="right" style="float: right"><i class="fa fa-address-book"></i></span>
+        </label>
+      </a>
+
+
+      <div class="collapse" id="collapseExample1">
+        <div class="well " style="border: none">
+          <div class="w3-card-4 w3-padding-16 col-lg-5" (click)="selectTemplateId(template)" *ngFor="let template of templateList2"
+            style="margin:5px;" [ngClass]="this.lesson.Segments[this.currentSegmentIndex].TemplateId == template.Id ? 'selectseg' : 'unselectseg'">
+            <img src="{{template.TemplateImage}}" height="60" width="60">
+            <div class="w3-container w3-center">
+              <p style="font-size: 12px; color: black; font-weight: bold">{{template.TemplateName}} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="row">
+        <button type="button" style="width:132px; height:40px; border-radius:3px; color:white; font-family:arial; font-size:16px;" data-toggle="modal" data-target="#savelessonsmodal">Submit</button>
+      </div>
+       <br/>
+      <div class="modal fade" id="savelessonsmodal" role="dialog" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+       <div class="modal-content">
+          <div class="modal-body">
+            <div class="row">
+              <img src="/assets/images/rocket.png">
+              </div>
+            <div class="row"> 
+                <p style="font-family:arial;font-size:24px;font-weight:500; color:#4a4a4a;">Submission Time</p>
+              </div>
+            <div class="row" style="margin-top:10px;">
+                <p style="font-size:16px;color:#4a4a4a; font-family:arial;">Congratulations! It looks like you are ready 
+                    to <br/>submit this lesson to queue for beta testing.
+                    </p>
+              </div>
+            <div class="row" style="margin-top:15px;">
+                <button style="width:216px; margin-left:180px;" (click)="onLessonSaveClick()">Submit for Testing</button>
+              </div>
+             <div class="row" style="margin-top:10px;">
+                <p style="font-size:16px;font-family:arial;color: #7d7d7d;">Not Ready Yet</p>
+               </div>
+             
+            
+            </div>
+          
+
+         </div>
+
+        </div>
+
+
+        </div> -->
+
+
+    </div>
+  </div>
+  <div class="col-lg-4" *ngIf="IsSegmentSelected">
+    <label class="Preview text-justify Preview" data-toggle="modal" data-target="#myModal3"> <span class="ml-1"><a><i
+            class="fa fa-eye"></i>Preview</a></span></label>
+    <div class="row col-12" [ngSwitch]="this.lesson.Segments[currentSegmentIndex].TemplateId">
+      <div *ngSwitchCase=1>
+        <p class="previewContainer">
+          {{currentSegment.ScreenContent}}
+        </p>
+        <div>
+          <!-- <button class="btn">Add Screen</button>
+    <button class="btn btn-success">Next Screen</button> -->
+        </div>
+      </div>
+      <div *ngSwitchCase=2>
+        <p class="previewContainer">
+          {{currentSegment.ScreenContent}}
+        </p>
+        <div class="col-lg-12">
+          <div class="col-lg-3">
+            <img [src]="'data:image/png;base64,'+lesson.Segments[this.currentSegmentIndex].SegmentImages[0].Image | safeHtml"
+              width="40px" height="40px" />
+          </div>
+          <div class="col=lg-9">
+            <label>Replace Image ?</label>
+            <p class="text-left " style="font-size: 16px">
+              Drag and drop an image or click
+
+            </p>
+            <div class="upload-btn-wrapper">
+              <button class="btnupload btn-sm">Upload a file</button>
+              <input (change)="onFileChange($event)" #fileInput type="file" name="myfile" />
+            </div>
+          </div>
+        </div>
+        <div>
+          <!-- <button class="btn">Add Question</button>
+  <button class="btn btn-success">Next Screen</button> -->
+        </div>
+
+      </div>
+      <div *ngSwitchCase=3>
+        <div>
+          <textarea class="form-control" maxlength="600" rows="6" [(ngModel)]="currentSegment.ScreenContent"
+            (ngModelChange)="valuechange($event)" style="resize:none;" placeholder="Type your question here..."></textarea>
+
+        </div>
+        <div>
+          <input id="true-answer" class="radio-custom" name="true-false-group" type="radio" [value]="true-false-selection"
+            (change)="true_false_answer(true)">
+          <label for="true-answer" class="radio-custom-label">True</label>
+        </div>
+        <div>
+          <input id="false-answer" class="radio-custom" name="true-false-group" type="radio" [value]="true-false-selection"
+            (change)="true_false_answer(false)">
+          <label for="false-answer" class="radio-custom-label">False</label>
+        </div>
+        <div>
+          <app-extra-question-info></app-extra-question-info>
+        </div>
+      </div>
+      <div *ngSwitchCase="4">
+        <div>
+          <textarea class="form-control" maxlength=600 rows="6" [(ngModel)]="currentSegment.ScreenContent"
+            (ngModelChange)="valuechange($event)" style="resize:none;" placeholder="Type your question here..."></textarea>
+
+        </div>
+        <div style="margin-top:20px;">
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td><input id="mc_op1" type="radio" name="multiple-choice-group" (change)="multiple_choice_answer1(mc_opt1.value)"
+                    style="height:25px;width:25px;;" *ngIf="mcoption1radiobutton"> <img src="/assets/images/greentick.png"
+                    height="30px;" width="30px;" *ngIf="mcoption1right"></td>
+
+                <td> <input id="mc_op1_text" type="textbox" placeholder=" Enter Option 1" class="option_1" #mc_opt1
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption1"
+                    style="margin-left:10px"></td>
+              </tr>
+            </table>
+
+
+
+          </div>
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td>
+                  <input id="mc_op2" type="radio" name="multiple-choice-group" (change)="multiple_choice_answer2(mc_opt2.value)"
+                    style="height:25px;width:25px" *ngIf="mcoption2radiobutton"><img src="/assets/images/greentick.png"
+                    height="30px;" width="30px;" *ngIf="mcoption2right">
+                </td>
+                <td>
+                  <input id="mc_op2_text" type="textbox" placeholder=" Enter Option 2" class="option_2" #mc_opt2
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption2"
+                    style="margin-left:10px">
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td>
+                  <input id="mc_op3" type="radio" name="multiple-choice-group" (change)="multiple_choice_answer3(mc_opt3.value)"
+                    style="height:25px;width:25px" *ngIf="mcoption3radiobutton">
+                  <img src="/assets/images/greentick.png" height="30px;" width="30px;" *ngIf="mcoption3right">
+                </td>
+                <td>
+                  <input id="mc_op3_text" type="textbox" placeholder=" Enter Option 3" class="option_3" #mc_opt3
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption3"
+                    style="margin-left:10px">
+                </td>
+              </tr>
+            </table>
+
+
+
+          </div>
+          <!-- <div *ngIf="addoptbutton">
+                         <button class="add-option-button" (click)="addnewoption()"><i class="fa fa-plus-square"></i> Add Option</button>
+                         </div> -->
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td>
+                  <input id="mc_op4" type="radio" name="multiple-choice-group" (change)="multiple_choice_answer4(mc_opt4.value)"
+                    style="height:25px;width:25px" *ngIf="mcoption4radiobutton">
+                  <img src="/assets/images/greentick.png" height="30px;" width="30px;" *ngIf="mcoption4right">
+                </td>
+                <td>
+                  <input id="mc_op4_text" type="textbox" placeholder=" Enter Option 4" class="option_4" #mc_opt4
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption4"
+                    style="margin-left:10px">
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+
+
+        </div>
+        <div>
+          <app-extra-question-info></app-extra-question-info>
+        </div>
+
+      </div>
+      <div *ngSwitchCase="5">
+        <div class="col-lg-12" style="margin-bottom:20px;">
+          <textarea class="form-control" maxlength="600" rows="6" [(ngModel)]="currentSegment.ScreenContent"
+            (ngModelChange)="valuechange($event)" style="resize:none;" placeholder="Type your question here..."></textarea>
+
+        </div>
+        <div>
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td>
+                  <input id="ms_op1" type="checkbox" name="multiple-select-group" (change)="checkoption1()" *ngIf="msoption1checkbox"
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[0].value" style="height:25px;width:25px;">
+                  <img src="/assets/images/greentick.png" *ngIf="msoption1right" width="30px;" height="30px;" (click)="unselectoption1()">
+                </td>
+                <td>
+                  <input id="ms_op1_text" type="textbox" placeholder=" Enter Option 1" class="option_1" style="margin-left:10px;"
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[0].mSelectOption"
+                    #ms_opt1>
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td>
+                  <input id="ms_op2" type="checkbox" *ngIf="msoption2checkbox" (change)="checkoption2()" [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[1].value"
+                    name="multiple-select-group" style="height:25px;width:25px;">
+                  <img src="/assets/images/greentick.png" *ngIf="msoption2right" width="30px;" height="30px;" (click)="unselectoption2()">
+                </td>
+                <td>
+                  <input id="ms_op2_text" type="textbox" placeholder=" Enter Option 2" class="option_2" style="margin-left:10px;"
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[1].mSelectOption"
+                    #ms_opt2>
+                </td>
+              </tr>
+            </table>
+
+
+
+          </div>
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td>
+                  <input id="ms_op3" type="checkbox" *ngIf="msoption3checkbox" (change)="checkoption3()" [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[2].value"
+                    name="multiple-select-group" style="height:25px;width:25px;">
+                  <img src="/assets/images/greentick.png" *ngIf="msoption3right" width="30px;" height="30px;" (click)="unselectoption3()">
+                </td>
+                <td>
+                  <input id="ms_op3_text" type="textbox" placeholder=" Enter Option 3" class="option_3" style="margin-left:10px;"
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[2].mSelectOption"
+                    #ms_opt3>
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td>
+                  <input id="ms_op4" type="checkbox" *ngIf="msoption4checkbox" (change)="checkoption4()" [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[3].value"
+                    name="multiple-select-group" style="height:25px;width:25px;">
+                  <img src="/assets/images/greentick.png" *ngIf="msoption4right" width="30px;" height="30px;" (click)="unselectoption4()">
+                </td>
+                <td>
+                  <input id="ms_op4_text" type="textbox" placeholder=" Enter Option 4" class="option_4" style="margin-left:10px;"
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[3].mSelectOption"
+                    #ms_opt4>
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+          <div class="col-lg-12">
+            <table>
+              <tr>
+                <td>
+                  <input id="ms_op5" type="checkbox" *ngIf="msoption5checkbox" (change)="checkoption5()" [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[4].value"
+                    name="multiple-select-group" style="height:25px;width:25px;">
+                  <img src="/assets/images/greentick.png" *ngIf="msoption5right" width="30px;" height="30px;" (click)="unselectoption5()">
+                </td>
+                <td>
+                  <input id="ms_op5_text" type="textbox" placeholder=" Enter Option 5" class="option_5" style="margin-left:10px;"
+                    [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[4].mSelectOption"
+                    #ms_opt5>
+                </td>
+              </tr>
+            </table>
+
+
+          </div>
+
+        </div>
+        <div>
+          <app-extra-question-info></app-extra-question-info>
+        </div>
+      </div>
+      <div *ngSwitchCase="6">
+
+        <div>
+          <textarea class="form-control" maxLength="600" rows="6" [(ngModel)]="currentSegment.ScreenContent"
+            (ngModelChange)="valuechange($event)" style="resize:none;" placeholder="Type your question here..."></textarea>
+
+        </div>
+        <div>
+          <input type="textbox" id="fill-up-answer" class="fill-up-answer" placeholder="Type your answer here..."
+            [(ngModel)]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].CorrectAnswer">
+        </div>
+
+        <div>
+          <app-extra-question-info [currentSegmentIndex] = "currentSegmentIndex"></app-extra-question-info>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container demo">
+
+
+
+    <!-- Modal -->
+    <div class="modal right fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel2">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+          <div class="modal-header">
+
+            <a href="#" style="text-decoration:none;">
+              <p style="font-size:35px;font-family:arial;color: #7d7d7d; text-decoration:none;" data-dismiss="modal"><span
+                  aria-hidden="true">&times;</span></p>
+            </a>
+          </div>
+
+          <div class="modal-body">
+            <div class='pca-hold'>
+                <div class='pca-main'>
+                    <div class='pca-inner' [ngSwitch]="lesson.Segments[this.currentSegmentIndex].TemplateId">
+                  <div *ngSwitchCase="1">
+
+                    <div col-lg-12 style="padding:5%;">
+                      <textarea class="tfq" rows="15" cols="21" style="resize:none; border:none; overflow:auto; background: #FFF;"
+                        disabled>{{lesson.Segments[this.currentSegmentIndex].ScreenContent}}</textarea>
+                    </div>
+                    <div class="row col-lg-12">
+
+
+                      <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+                      <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="2">
+                    <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId ==2">
+                      <img [src]="'data:image/png;base64,'+lesson.Segments[this.currentSegmentIndex].SegmentImages[0].Image | safeHtml"
+                        style="height: 155px;" />
+                    </div>
+                    <div col-lg-12 style="padding:5%; font-size:8px">
+                      <textarea class="tfq" cols="21" rows="7" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                        disabled>  {{lesson.Segments[this.currentSegmentIndex].ScreenContent}}</textarea>
+                    </div>
+                    <div class="row col-lg-12">
+
+
+                      <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+                      <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="3">
+                    <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId ==3">
+                      <textarea class="tfq" cols="25" rows="12" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                        disabled> {{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].Question}}</textarea>
+                    </div>
+                    <div class="row">
+                      <button id="true-answer-button" class="true-false-class" [class.true-false-class2]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].CorrectAnswer==='True'">True</button><button
+                        id="false-answer-button" class="true-false-class" [class.true-false-class2]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].CorrectAnswer==='False'">False</button>
+
+                    </div>
+                    <div class="row col-lg-12">
+
+
+                      <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+                      <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+                    </div>
+
+                  </div>
+                  <div *ngSwitchCase="4">
+                    <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId == 4">
+                      <textarea class="tfq" cols="25" rows="7" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                        disabled> {{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].Question}}</textarea>
+                    </div>
+                    <div class="row" style="margin-top:30px;">
+
+                      <button class="mc-selected" [ngClass]="{
+                             'mc-selected2':McOpt1===true
+                           }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption1}}</button>
+                      <br />
+                      <button class="mc-selected" [ngClass]="{
+                             'mc-selected2':McOpt2===true
+                            }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption2}}</button>
+                      <br />
+                      <button class="mc-selected" [ngClass]="{
+                             'mc-selected2':McOpt3===true
+                            }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption3}}</button>
+                      <button class="mc-selected" [ngClass]="{
+                              'mc-selected2':McOpt4===true
+                            }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption4}}</button>
+                    </div>
+                    <div class="row col-lg-12">
+
+
+                      <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+                      <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="5">
+                    <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId == 5">
+                      <textarea class="tfq" cols="25" rows="5" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                        disabled> {{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].Question}}</textarea>
+                    </div>
+                    <div class="row" style="margin-top:30px;">
+                      <button class="ms-selected" [ngClass]="{
+                          'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[0].value===true
+                         }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[0].mSelectOption}}</button>
+                      <button class="ms-selected" [ngClass]="{
+                          'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[1].value===true
+                         }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[1].mSelectOption}}</button>
+                      <button class="ms-selected" [ngClass]="{
+                          'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[2].value===true
+                         }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[2].mSelectOption}}</button>
+                      <button class="ms-selected" [ngClass]="{
+                          'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[3].value===true
+                         }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[3].mSelectOption}}</button>
+                      <button class="ms-selected" [ngClass]="{
+                          'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[4].value===true
+                         }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[4].mSelectOption}}</button>
+                    </div>
+                    <div class="row col-lg-12">
+
+
+                      <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+                      <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+                    </div>
+                  </div>
+                  <div *ngSwitchCase="6">
+                    <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId == 6">
+                      <textarea class="tfq" cols="25" rows="15" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                        disabled>{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].Question}}</textarea>
+                    </div>
+                    <div class="row">
+                      <textarea rows="1" cols="17" style="resize:none;border:none;overflow:auto; background: #FFF; border-bottom:1px solid grey; margin-left:30px;"
+                        disabled>{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].CorrectAnswer}}</textarea>
+                    </div>
+                    <div class="row col-lg-12">
+
+
+                      <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+                      <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+                    </div>
+                  </div>
+
+                      
+                </div><!-- 'pca-inner' -->
+                  </div><!-- 'pca-main' -->
+                <div class='pca-sub'>
+                    <div class='pca-top'></div>
+                    <div class='pca-mid'>
+                        <div class='pca-part'></div>
+                      </div><!-- 'pca-mid' -->
+                   
+                  </div><!-- 'pca-bot' -->
+            </div><!-- 'pca-hold' -->
+          </div>
+
+        </div><!-- modal-content -->
+      </div><!-- modal-dialog -->
+    </div><!-- modal -->
+
+
+  </div><!-- container -->

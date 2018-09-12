@@ -1,0 +1,124 @@
+.cancelbutton
+{
+    font-size:20px;
+    color:#884ef9;
+    font-family:arial;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+.backarrow
+{
+    margin-left:20px;
+    color:#884ef9;
+    margin-top:10px;
+    margin-bottom:20px;
+}
+.coursename
+{
+    margin-top:10px;
+    width: 420px;
+    border:1px solid lightgray;
+}
+.coursedesc
+{
+    margin-top:10px;
+    width: 420px;
+    height:200px;
+    border: 1px solid lightgray;
+}
+.savebutton
+{
+    margin-left:60px;
+    margin-top:50px;
+    width:132px;
+    height:40px;
+    background-color:#e9e9e9;
+    border-radius:3px;
+    color: #7d7d7d;
+    font-size: 16px;
+    
+}
+.coursename::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+   font-size:32px;
+   font:arial;
+   color:#4a4a4a;
+   font-weight:bold;
+   opacity:1;
+  }
+  .coursename::-moz-placeholder { /* Firefox 19+ */
+    font-size:32px;
+    font:arial;
+    color:#4a4a4a;
+    font-weight:bold;
+    opacity:1;
+  }
+  .coursename:-ms-input-placeholder { /* IE 10+ */
+    font-size:32px;
+    font:arial;
+    color:#4a4a4a;
+    font-weight:bold;
+    opacity:1;
+  }
+  .coursename:-moz-placeholder { /* Firefox 18- */
+    font-size:32px;
+    font:arial;
+    color:#4a4a4a;
+    font-weight:bold;
+    opacity:1;
+  }
+
+  .coursedesc::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+   font-size:20px;
+   font:arial;
+   color:#7d7d7d;
+   opacity:1;
+   }
+   .coursedesc::-moz-placeholder { /* Firefox 19+ */
+    font-size:20px;
+    font:arial;
+    color:#7d7d7d;
+    opacity:1;
+   }
+   .coursedesc:-ms-input-placeholder { /* IE 10+ */
+    font-size:20px;
+    font:arial;
+    color:#7d7d7d;
+    opacity:1;
+   }
+   .coursedesc:-moz-placeholder { /* Firefox 18- */
+    font-size:20px;
+    font:arial;
+    color:#7d7d7d;
+    opacity:1;
+   }
+
+   .emptycircle
+   {
+       opacity:0.7;
+       margin-top:20px;
+   }
+
+   .nothingtoshow
+   {
+       margin-top:20px;
+    font-family: arial;
+    font-size: 32px;
+     font-weight:bold;
+    color:#4a4a4a;
+   }
+   .nolessonadded
+   {
+    color: #7d7d7d;
+    font-size: 20px;
+    font-family: arial;
+   }
+   .addalesson
+   {
+    width: 160px;
+    height: 40px;
+    background-color: #86d190;
+    color: #ffffff;
+    font-size:16px;
+    font-family:arial;
+    border-radius:3px;
+   }

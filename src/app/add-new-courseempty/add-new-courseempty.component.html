@@ -1,0 +1,33 @@
+<div class="col-lg-12">
+<div class="col-lg-5" style="border-right: 1px lightgrey solid">
+  <div class="row">
+    <a (click)="backtocources()"><i class="pull-left fa fa-long-arrow-left fa-2x backarrow "></i><p class="cancelbutton pull-left">Cancel</p></a>
+  </div>
+  
+    <div class="row">  
+      <textarea class="pull-left coursename" rows="1"
+      style="margin-left:60px; resize:none;color: #4a4a4a;font-size: 32px;font-weight: bold;font-family:arial;"
+      [(ngModel)]="this.newCourse.CourseName" name="CourseName"  placeholder="Course Title" [disabled]="disableForm" ></textarea>
+    </div>
+
+    <div class="row">
+      <textarea class="pull-left coursedesc" 
+      [disabled]="disableForm"
+      [(ngModel)]="this.newCourse.CourseContent" name="CourseContent" id="courseDescription" placeholder="Describe the course you are creating..." style="resize:none; background:#fff; height:250px; margin-left:60px;"></textarea>
+    </div>
+    <div class="row" style="margin-bottom:40px;">
+        <input class="btn btn-default " type="button" id="btnchange" value="{{SaveorEdit}}" (click)="SaveCourse()" class="savebutton">
+      </div>
+    
+
+</div>
+<div class="col-lg-7">
+  <img src="/assets/images/circle1.png" width="199" height="199" class="center-block emptycircle">
+  <p class="nothingtoshow">Nothing to see here!</p>
+  <br />
+  <p class="nolessonadded">No lessons have been added yet</p>
+  <br />
+  <input type="button" *ngIf="showLessonDiv"  [routerLink]="['/add-newLesson', newCourse.Id]" class="addalesson center-block" (click)="showAddLesson()" value="Start A Lesson">
+
+</div>
+</div>

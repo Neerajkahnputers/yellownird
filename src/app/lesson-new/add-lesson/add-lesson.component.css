@@ -1,0 +1,20 @@
+.active {
+    background-color: var(--powder-blue-30);
+    box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.nav-pills > li {
+    font-family: AcuminPro;
+    font-size: 16px;
+}
+
+    .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+        background-color: rgba(186, 215, 255, 0.3);
+        box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+        font-family: AcuminPro;
+        font-size: 16px;
+        letter-spacing: -0px;
+        text-align: center;
+        color: #9765f8;
+        color: var(--lighter-purple);
+    }

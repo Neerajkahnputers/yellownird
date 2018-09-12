@@ -1,0 +1,218 @@
+﻿<div class="col-lg-8" style="border-right: 1px lightgrey solid">
+  <a class="col-lg-1" (click)="decrementIndex()">
+    <i class="fa fa-arrow-circle-o-left fa-3x" style="margin-top: 200px;"></i>
+  </a>
+  <div class="col-lg-10">
+    <div class='pca-hold col-lg-offset-4 '>
+        <div class='pca-main'>
+            <div class='pca-inner' [ngSwitch]="lesson.Segments[this.currentSegmentIndex].TemplateId">
+          <div *ngSwitchCase="1">
+
+            <div col-lg-12 style="padding:5%;">
+              <textarea class="tfq" rows="15" cols="23" style="resize:none;border:none; overflow:hidden; background: #FFF;"
+                disabled>{{lesson.Segments[this.currentSegmentIndex].ScreenContent}}</textarea>
+            </div>
+            <div class="row col-lg-12">
+
+
+              <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+              <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+            </div>
+          </div>
+          <div *ngSwitchCase="2">
+            <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId ==2">
+              <img [src]="'data:image/png;base64,'+lesson.Segments[this.currentSegmentIndex].SegmentImages[0].Image | safeHtml"
+                style="height: 155px;" />
+            </div>
+            <div col-lg-12 style="padding:5%;">
+              <textarea class="tfq" cols="23" rows="7" style="resize:none;border:none;overflow:hidden; background: #FFF;"
+                disabled>  {{lesson.Segments[this.currentSegmentIndex].ScreenContent}}</textarea>
+            </div>
+            <div class="row col-lg-12">
+
+
+              <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+              <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+            </div>
+          </div>
+          <div *ngSwitchCase="3">
+            <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId ==3">
+              <textarea class="tfq" cols="25" rows="7" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                disabled> {{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].Question}}</textarea>
+            </div>
+            <div class="row questansgap2">
+              <button id="true-answer-button" class="true-false-class" [class.true-false-class2]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].CorrectAnswer==='True'">True</button><button
+                id="false-answer-button" class="true-false-class" [class.true-false-class2]="lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].CorrectAnswer==='False'">False</button>
+
+            </div>
+            <div class="row col-lg-12">
+
+
+              <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+              <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+            </div>
+
+          </div>
+          <div *ngSwitchCase="4">
+            <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId == 4">
+              <textarea class="tfq" cols="25" rows="9" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                disabled> {{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].Question}}</textarea>
+            </div>
+            <div class="row" style="margin-top:10px;">
+              <button class="mc-selected" [ngClass]="{
+                      'mc-selected2':McOpt1===true
+                    }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption1}}</button>
+              <br />
+              <button class="mc-selected" [ngClass]="{
+                      'mc-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].CorrectAnswer===lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption1
+                     }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption2}}</button>
+              <br />
+              <button class="mc-selected" [ngClass]="{
+                      'mc-selected2':McOpt3===true
+                     }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption3}}</button>
+              <button class="mc-selected" [ngClass]="{
+                       'mc-selected2':McOpt4===true
+                     }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mcOptions.McOption4}}</button>
+            </div>
+            <div class="row col-lg-12">
+
+
+              <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+              <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+            </div>
+          </div>
+
+          <div *ngSwitchCase="5">
+            <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId == 5">
+              <textarea class="tfq" cols="25" rows="6" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                disabled> {{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].Question}}</textarea>
+            </div>
+            <div class="row" style="margin-top:30px;">
+              <button class="ms-selected" [ngClass]="{
+                        'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[0].value===true
+                       }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[0].mSelectOption}}</button>
+              <button class="ms-selected" [ngClass]="{
+                        'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[1].value===true
+                       }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[1].mSelectOption}}</button>
+              <button class="ms-selected" [ngClass]="{
+                        'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[2].value===true
+                       }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[2].mSelectOption}}</button>
+              <button class="ms-selected" [ngClass]="{
+                        'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[3].value===true
+                       }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[3].mSelectOption}}</button>
+              <button class="ms-selected" [ngClass]="{
+                        'ms-selected2':lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[4].value===true
+                       }">{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].mSelect[4].mSelectOption}}</button>
+            </div>
+            <div class="row col-lg-12">
+
+
+              <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+              <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+            </div>
+          </div>
+          <div *ngSwitchCase="6">
+            <div col-lg-12 *ngIf="lesson.Segments[this.currentSegmentIndex].TemplateId == 6">
+              <textarea class="tfq" cols="25" rows="15" style="resize:none;border:none;overflow:auto; background: #FFF;"
+                disabled>{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].Question}}</textarea>
+            </div>
+            <div class="row">
+              <textarea rows="1" cols="17" style="resize:none;border:none;overflow:auto; background: #FFF; border-bottom:1px solid grey; margin-left:30px;"
+                disabled>{{lesson.Segments[this.currentSegmentIndex].QuestionAnswers[0].CorrectAnswer}}</textarea>
+            </div>
+            <div class="row col-lg-12">
+
+
+              <div class="col-lg-3 float-left likebuttonmob"><i class="fa fa-heart"></i></div>
+              <div class=" col-lg-6 submitbuttonmob">Submit <i class="fa fa-chevron-right"></i></div>
+            </div>
+          </div>
+
+              
+        </div><!-- 'pca-inner' -->
+          </div><!-- 'pca-main' -->
+        <div class='pca-sub'>
+            <div class='pca-top'>
+
+        </div>
+            <div class='pca-mid'>
+                <div class='pca-part'></div>
+              </div><!-- 'pca-mid' -->
+           
+          </div><!-- 'pca-bot' -->
+    </div><!-- 'pca-hold' -->
+
+  </div>
+  <a class="col-lg-1" (click)="incrementIndex()">
+    <span class="fa fa-arrow-circle-o-right fa-3x" style="margin-top: 200px;"></span>
+  </a>
+
+</div>
+
+<div class="col-lg-4">
+  <div class="row" style="margin-left: 20px;">
+    <p style="width: 98px; height: 26px; font-family: Arial; font-size: 20px; font-weight: 500; line-height: 1.3; text-align: left; color: #4a4a4a;">Comments</p>
+  </div>
+
+
+
+  <div class="row" style="margin-top: 10px;">
+    <table>
+      <tr>
+        <td><img [src]="photoURL()" style="margin-left:25px;" height="30" width="30"></td>
+        <td>
+          <p class="incubatorname">{{profile.FirstName}} {{profile.LastName}}
+            <i class="fa fa-ellipsis-h fa-2x pull-right" aria-hidden="true">
+            </i>
+          </p>
+
+          <textarea id="comments" style="margin-left:25px;" rows="2" cols="35" placeholder="Type comment here..." class="comments"
+            [(ngModel)]="currentcomment"></textarea>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+
+  <div class="row">
+    <a id="postcommentbutton" class="postcommentlink" (click)="postcurrentcomment(currentcomment)" *ngIf="currentcomment">Post
+      as {{profile.FirstName}} {{profile.LastName}}</a>
+  </div>
+
+  <div style="height:200px; overflow-y:scroll; overflow-x:hidden;">
+    <div class="row" *ngFor="let comment of commentlist" style="margin-top:10px;border:1px solid lightgrey;">
+
+      <table>
+        <tr>
+          <td>
+            <img [src]="photoURL()" style="margin-left:25px;" height="30" width="30">
+          </td>
+          <td>
+            <p class="incubatorname">{{profile.FirstName}} {{profile.LastName}}
+              <i class="fa fa-ellipsis-h fa-2x pull-right" style="margin-right:30px;" aria-hidden="true"></i>
+            </p>
+            <textarea id="showcomment" rows="2" cols="35" class="showcomment" disabled>{{comment}}</textarea>
+          </td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+  <div style="position:relative;">
+    <div class="row" style="margin-left: 20px;">
+      <p style="width: 166px; height: 26px; font-family: Arial; font-size: 20px; font-weight: 500; line-height: 1.3; text-align: left; color: #4a4a4a;">Lesson
+        Navigation</p>
+      <form>
+        Screen <input type="textbox" placeholder="{{currentSegmentIndex+1}}" #box (keyup)="goToIndex(box.value)" style="width: 24px; height: 24px; border: solid 1px #e1e1e1; 
+           background-color: #f3f3f3; border: solid 1px #e1e1e1; color: #884ef9">
+        of 20
+      </form>
+    </div>
+    <div class="row" style="margin-left: 20px;">
+      <p style="font-size: 12px;font-style: italic;line-height: 1.33; text-align: left;color: #9b9b9b;">Enter the page
+        you want to jump around</p>
+    </div>
+  </div>
+
+
+</div>

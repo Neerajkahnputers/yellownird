@@ -1,0 +1,11 @@
+﻿/* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import url("Content/bootstrap.css");
+@import url("assets/css/normalize.css");
+@import url("assets/css/application.css");
+@import url("Content/build.css");
+@import url("Content/colors.css");
+@import url("assets/css/jquery.magicsearch.css");
+@import url("https://www.w3schools.com/w3css/4/w3.css");
+@import url("https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/alertify.min.css");
+@import url("https://cdn.jsdelivr.net/npm/alertifyjs@1.11.0/build/css/themes/semantic.min.css");

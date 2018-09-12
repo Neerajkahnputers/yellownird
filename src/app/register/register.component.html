@@ -1,0 +1,186 @@
+﻿
+<div class="wrapper wrapper-full-page">
+  <div class="full-page register-page" filter-color="black" data-image="../../assets/img/register.jpeg">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+          <div class="card card-signup ">
+            <h3 class="card-title card-header text-center">Register</h3>
+            <div class="row">
+
+              <div class="col-md-12">
+                <div class="social text-center">
+                  <a routerLink="/Login" class="btn btn-xs btn-rose">
+                    Switch To Login
+                  </a>
+
+                </div>
+                <form class="form" method="" action="">
+                  <div class="card-content">
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">EmailId Id</label>
+                            <input type="text" name="UserName" [(ngModel)]="user.Email" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">User Id</label>
+                            <input type="text" name="UserName" [(ngModel)]="user.UserId" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">First Name</label>
+                            <input type="text" name="FirstName" [(ngModel)]="user.FirstName" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">LastName</label>
+                            <input type="text" name="LastName" [(ngModel)]="user.LastName" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">street 1</label>
+                            <input type="text" name="Address1" [(ngModel)]="user.Address1" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">street 2</label>
+                            <input type="text" name="Address2" [(ngModel)]="user.Address2" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">City</label>
+                            <input type="text" name="City" [(ngModel)]="user.City" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">State</label>
+                            <input type="text" name="State" [(ngModel)]="user.State" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">Zip Code</label>
+                            <input type="text" name="zip" [(ngModel)]="user.zip" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">Phone Number</label>
+                            <input type="text" name="PhoneNumber" [(ngModel)]="user.PhoneNumber" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">Password</label>
+                            <input type="password" name="Password" [(ngModel)]="user.Password" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="input-group">
+                          <span class="input-group-addon">
+
+                          </span>
+                          <div class="form-group label-floating">
+                            <label class="control-label">Confirm Password</label>
+                            <input type="password" name="Password" [(ngModel)]="user.ConfirmPassword" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+
+
+
+                    </div>
+
+                  </div>
+                  <div class="footer text-center">
+                    <a (click)="submit()" class="btn btn-rose btn-round">Get Started</a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

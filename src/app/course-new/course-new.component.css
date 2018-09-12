@@ -1,0 +1,149 @@
+﻿.heading {
+  color: black;
+}
+
+.para1 {
+  font-size: 20px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 15px;
+}
+
+  .switch input {
+    display: none;
+  }
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 12px;
+    left: 0px;
+    bottom: 0px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+input:checked + .slider {
+  background-color: green;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(20px);
+  -ms-transform: translateX(20px);
+  transform: translateX(20px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+a:hover {
+  color: #884ef9;
+  text-decoration: none;
+}
+.coursename
+{
+  font-size:32px;
+  text-align: left;
+  margin-left:45px;
+  margin-top:10px;
+  color: #4a4a4a;
+  font-weight: bold;
+  font-family:arial;
+}
+#backtocourses
+{
+  font-family:arial;
+  font-size:20px;
+  margin-left:60px;
+}
+#comment
+{
+  margin-left:60px;
+  margin-top:10px;
+width:375px;
+height:250px;
+resize:none;
+background:#fff;
+border: 1px solid lightgray;
+color: #7d7d7d;
+font-size:20px;
+overflow:hidden;
+}
+.editorsave
+{
+  margin-top:40px;
+  margin-left:60px;
+  width:132px;
+  height:40px;
+  border-radius:3px;
+  color: #7d7d7d;
+  border-radius: 3px;
+  background-color: #e9e9e9;
+}
+.addalesson
+{
+  width: 132px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #86d190;
+  color:white;
+  font-size:16px;
+  font-family:arial;
+  text-align:center;
+}
+.addalesson a:hover{
+  background-color: #86d190;
+  color:white; 
+  font-family:arial;
+  text-align:center;
+}
+.stagingbutton
+{
+  width: 168px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #86d190;
+  color:white;
+  font-size:16px;
+  font-family:arial;
+  text-align:center;
+}
+.stagingbutton a:hover
+{
+  width: 168px;
+  height: 40px;
+  background-color: #86d190;
+  color:white; 
+  font-family:arial;
+  text-align:center;
+}
+
+
+

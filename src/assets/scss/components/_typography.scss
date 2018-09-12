@@ -1,0 +1,144 @@
+//  Typography Styles
+//  ============================================
+
+
+// Header Styles
+
+h1 {
+    display: block;
+    font-weight: 900;
+    margin: 8px auto 16px;
+    font-size: 2.55em;
+    max-width: 10em;
+    line-height: 1;
+    letter-spacing: -0.5px;
+    vertical-align: baseline;
+    text-align: center;
+    
+}
+h2 {
+    font-size: 2em;
+    line-height: 1.2;
+    color: #bbb;
+}
+h2,
+h3 {
+    margin: 24px auto 8px;
+    font-size: 25px;
+    line-height: 1.3em;
+}
+h2 {
+    color: $electric-violet;
+    font-size: 2em;
+    line-height: 1.125;
+    font-weight: 600;
+    margin-bottom: 6px;
+    text-align: center;
+}
+h3 {
+    font-size: 1.5em;
+    line-height: 1.6;
+    font-weight: normal;
+    letter-spacing: -0.125px;
+    text-align: center;
+    color: $header;
+}
+.container-list h3,
+.container-medium__fellow h2 {
+    text-align: left;
+}
+
+h4 {
+    width: 100%;
+    display: block;
+    font-size: 1.5em; /* 26px/16px */
+    line-height: 1.125;
+    font-weight: 500;
+    text-align: center;
+    margin: 0 auto 16px;
+    padding: 0 8%;
+    color: $sub-header;
+}
+h5 {
+    text-align: center;
+    font-size: 22px;
+    line-height: 1;
+    color: black;
+    margin-bottom: 8px;
+    font-weight: 600;
+    
+}
+
+
+// Paragraph Styles
+
+p, 
+li {
+    color: $spanish-grey;
+    font-size: 18px;
+    line-height: 28px;
+    margin-bottom:8px;
+}
+p {
+    text-align: center;
+}
+.container-full div p {
+    color: black;
+}
+strong {
+    color: #333;
+    font-size: inherit;
+    line-height: 1;
+}
+
+.container p,
+    .container-intro p {
+        min-width: 16em;
+        padding: 0;
+    }
+p {
+    margin: 0;
+}
+
+//p, li {
+//    font-size: 1.125em;
+//    line-height: 26px;
+//    opacity: 0.87;
+//    font-weight: 400;
+//    letter-spacing: 0.125px;
+//    margin-bottom: 12px;
+//}
+
+.footer p {
+    font-size: 1em;
+}
+
+li,
+a li,
+li a {
+    font-weight: 500;
+    text-decoration: none;
+}
+
+input {
+    font-size: 1.3125em /* 21px/16px */
+}
+
+
+//  Tablet and Large Screens
+//  =================================
+@media (min-width: 700px) {
+h1{
+    font-size: 4.25em;
+    font-weight: 900;
+    margin-top: 24px;
+    max-width: none;
+}
+.container__left h1,
+.container__left h2,
+.container__left h3,
+    .container__left p {
+        text-align: left;
+    }
+
+}

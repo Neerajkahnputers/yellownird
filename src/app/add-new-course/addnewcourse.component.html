@@ -1,0 +1,30 @@
+﻿<div class="col-lg-12">
+  <h2 (click)="backtocources()"><span class="pull-left glyphicon glyphicon-arrow-left">Cancel</span></h2>
+
+</div>
+
+<div class="col-lg-4">
+  <form>
+    <div class="form-group">
+      <br />
+      <br />
+      <label for="CourseTitle">Course Title</label>
+      <input type="text" class="form-control" [(ngModel)]="newCourse.CourseName" name="CourseName" placeholder="Course Title">
+    </div>
+    <div class="form-group">
+      <label for="Description">Description</label>
+      <textarea [(ngModel)]="newCourse.CourseContent" name="CourseContent" style="margin: 0px;width: 470px;height: 75px;" id="courseDescription"></textarea>
+    </div>
+
+    <input class="btn btn-default " type="button" id="btnchange" value="{{SaveMode}}" (click)="SaveCourse()">
+  </form>
+</div>
+<div class="col-lg-8">
+  <img src="/assets/images/circle1.png" width="300" height="300" class="center-block">
+  <p style="color:black;font-size:36px; font-weight:bold">Nothing to see here!</p>
+  <br />
+  <p style="font-size:28px">No lessons have been added yet</p>
+  <br />
+  <button class="btn btn-success center-block" (click)="showAddLesson()">Start A Lesson</button>
+
+</div>
