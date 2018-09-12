@@ -10,7 +10,7 @@ export class ApplicationConfiguration
     constructor()
     {
         this.APPLICATIONURL = 'http://www.yellowbird.tk';
-        this.WEBAPIURL = 'http://yellowbirdapi.azurewebsites.net/';
+        this.WEBAPIURL = 'https://yellowbirdapi.azurewebsites.net/';
         this.LessonAutoSegmentSize = 500;
     }
 }
