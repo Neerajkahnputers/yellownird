@@ -1,0 +1,49 @@
+//  =========================
+//  Buttons
+//  =========================
+
+button {
+    border: none;
+    background-color: $electric-violet;
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    color: white;
+    margin: 28px 0;
+}
+
+.button-back {
+    margin: 30px 0 0 15px;
+    position: absolute;
+    border-bottom: 2px solid #B38EFB;
+    padding: 8px 4px 8px 40px;
+    background: url("/images/icon/quit.svg") no-repeat left;
+    opacity: .54;
+}
+.button-back:hover {
+    opacity: 1;
+}
+.button-back a {
+    text-decoration: none;
+    font-weight: 600;
+    color: $electric-violet;
+}
+
+.button_grey {
+    display: block;
+    float: left;
+    background-color: rgba(135, 78, 249, 0.1);
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: 1px solid #D9C7FB;
+}
+
+
+//  Tablet and Larger Screens
+//  =============================================
+@media (min-width: 700px) {
+
+.button-back {
+    margin-left: 2%;
+}
+}

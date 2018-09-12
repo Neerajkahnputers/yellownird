@@ -1,0 +1,74 @@
+//  ===============================
+//  Lists
+//  ===============================
+
+ul.list-features {
+    width: 100%;
+    float: left;  
+}
+
+ul.list-fellowships li {
+    margin: 8px 16px 8px 0;
+    list-style: none;
+}
+
+ul.list-fellowships li a {
+    color: #9765F8;
+    list-style: none;     
+}
+.container-list {
+    float: left;
+}
+ul.list-footer {
+    border-bottom: 1px solid #eaeaea;
+    float: left;
+    width: 100%;
+    padding: 16px 8%;
+}
+
+ul.list-footer li {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0 8% 0 0;
+    float: left;
+    text-align: left;
+}
+
+li.container-mini {
+    display: block;
+    width: 100%;
+    margin: 20px auto;
+    float: left;
+    list-style: none;
+}
+
+ul.list-social {
+    float: right;
+}
+
+ul.list-social li {
+    float: left;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    margin: -7px 6px;
+    text-align: center;
+    opacity: .54;
+    background-blend-mode: multiply;
+    -webkit-background-blend-mode: overlay;
+    -os-background-blend-mode: overlay;
+}
+
+
+
+//  Tablet and Larger Screens
+//  =====================================
+
+@media (min-width: 700px) {
+    ul.list-features li {
+    width: 50%;
+    float: left;  
+}
+    
+}

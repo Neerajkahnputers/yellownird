@@ -1,0 +1,49 @@
+//  ==================================
+//  Mailchimp
+//  ==================================
+
+#mc_embed_signup form {
+    padding: 0px!important;
+    font-size: 1em!important;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 24em
+}
+
+input {
+    max-width: 100%;
+    margin: 0 0 10px 0;
+    min-height: 40px;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    background-color: transparent;
+    font-size: 1.25em!important;
+/*    text-align: center;*/
+}
+
+#mc_embed_signup{
+    width: 100%;
+    margin-top: 40px;
+}
+
+#mc_embed_signup .mc-field-group input {
+    background-color: white;
+    border: solid 1px #e1e1e1;
+    border-radius: 5px;
+    height: 50px;
+    padding-left: 2%!important;
+}
+
+#mc_embed_signup .mc-field-group {
+    width: 100%!important;
+}
+
+#mc_embed_signup .button {
+    background-color: #00aced!important;
+    width: 100%!important;
+    padding: 8px 0!important;
+    border-radius: 5px!important;
+    min-height: 50px!important;
+    border: 1px solid rgba(0,0,0,0.2)!important;
+    display: block;
+}
